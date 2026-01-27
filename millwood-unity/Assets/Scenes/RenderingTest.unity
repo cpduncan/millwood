@@ -855,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ebd698723a057469750751a5926bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  mat: {fileID: 0}
   rayOrigin: {fileID: 1605797154}
 --- !u!1 &1605797153
 GameObject:
@@ -1027,7 +1028,7 @@ Transform:
   m_GameObject: {fileID: 1890855819}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14295983, y: -0.25, z: -3.1}
+  m_LocalPosition: {x: -13.16, y: -0.25, z: -3.1}
   m_LocalScale: {x: 30, y: 0.5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,7 +1169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6aa39af76f5d9fe458b34df31484311d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
