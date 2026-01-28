@@ -4,5 +4,5 @@
 - Active game object:
   - Name: Test Camera
   - Tag: MainCamera
-  - Layer: Player
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

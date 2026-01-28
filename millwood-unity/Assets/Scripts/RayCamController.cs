@@ -2,6 +2,7 @@ using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.Image;
 
 public class renderingtest1 : MonoBehaviour
 {
@@ -29,9 +30,8 @@ public class renderingtest1 : MonoBehaviour
 
     private void Awake()
     {
-        layerMask = ~LayerMask.NameToLayer("Player");
+        layerMask = 1 << 8;
     }
-
 
     private void Start()
     {
@@ -71,7 +71,7 @@ public class renderingtest1 : MonoBehaviour
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(rayOrigin.position, fwd, out hit, 10, layerMask))
+        if (Physics.Raycast(rayOrigin.position, fwd, out hit, 10f, layerMask))
         {
             Renderer renderer = hit.transform.gameObject.GetComponent<Renderer>();
             meshObject.GetComponent<MeshRenderer>().material = renderer.material;
