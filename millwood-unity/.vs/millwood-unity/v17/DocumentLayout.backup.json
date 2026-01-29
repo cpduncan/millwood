@@ -1,69 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\assets\\scripts\\renderingtest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\renderingtest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{385BB587-9650-D255-44EE-39DDD8E009A6}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\assets\\scripts\\firstpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{385BB587-9650-D255-44EE-39DDD8E009A6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\firstpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{385BB587-9650-D255-44EE-39DDD8E009A6}|Assembly-CSharp.csproj|C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\assets\\scripts\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{385BB587-9650-D255-44EE-39DDD8E009A6}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerinputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FirstPersonController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\FirstPersonController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\FirstPersonController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\FirstPersonController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\FirstPersonController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T07:57:01.322Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PlayerInputHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\PlayerInputHandler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerInputHandler.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\PlayerInputHandler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerInputHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T07:46:19.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "renderingtest1.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\renderingtest1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\renderingtest1.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\millwood\\millwood-unity\\Assets\\Scripts\\renderingtest1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\renderingtest1.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-27T06:17:13.476Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
