@@ -81,14 +81,10 @@ public class ContactMesh
         createMesh();
     }
 
-    public void updateTransform(Vector3 transform, Quaternion rotation)
+    public void updateTransform(Vector3 position, Quaternion rotation)
     {
-        vertices[0] = transform + rotation * new Vector3(-.2f, -.2f, 0);
-        vertices[1] = transform + rotation * new Vector3(-.2f, .2f, 0);
-        vertices[2] = transform + rotation * new Vector3(.2f, .2f, 0);
-        vertices[3] = transform + rotation * new Vector3(.2f, -.2f, 0);
-        Object.Destroy(meshObject);
-        createMesh();
+        meshObject.transform.position = position;
+        meshObject.transform.rotation = rotation;
     }
 
     public void createMesh()
