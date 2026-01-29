@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework.Constraints;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
@@ -8,36 +9,58 @@ using static UnityEngine.UI.Image;
 public class RayCamController : MonoBehaviour
 {
 
-    [Header("Entity \"RayCam\" parameters")]
-    [SerializeField] private int gridWidth = 16;
-    [SerializeField] private int gridHeight = 9;
+    [Header("RayCam parameters")]
+    [SerializeField] private int gridWidth;
+    [SerializeField] private int gridHeight;
+    
+    [SerializeField] private float meshSize;
 
-    private ContactMesh[,] meshes;
-    private Vector3[,] directions;
+    /*
+     * vertical fov degree: halfCameraFOV
+     * horizontal fov degree: arctan(tan(verticalFovDegree)*(16/9))
+     */
+    
+    
+    // [Range(-2.0f, 0f)] public float bottomLeftRayX;
+    // private float bottomLeftRayX = -1.05f;
+    // [Range(-2.0f, 0f)] public float bottomLeftRayY;
+    // private float bottomLeftRayY = -0.6f;
+    // [Range(0.0f, 1.0f)] public float rayPositionIncrement;
+
+    private float _topFovAngle;
+    private float _botLeftPosY;
+    private float _rightFovAngle;
+    private float _botLeftPosX;
+    
+    private ContactMesh[,] _meshes;
+    private Vector3[,] _directions;
 
     private void Awake()
     {
-        meshes = new ContactMesh[gridWidth, gridHeight];
-        directions = new Vector3[gridWidth, gridHeight];
+        _topFovAngle = Camera.main.fieldOfView / 2f;
+        _botLeftPosY = Mathf.Tan(_topFovAngle*Mathf.Deg2Rad);
+        _rightFovAngle = Mathf.Atan(Mathf.Tan(_topFovAngle*Mathf.Deg2Rad) * (16f / 9f));
+        _botLeftPosX = Mathf.Tan(_rightFovAngle);
+        
+        _meshes = new ContactMesh[gridWidth, gridHeight];
+        _directions = new Vector3[gridWidth, gridHeight];
 
-        float incriment = 0.1f;
-
-        //float xEuler = (gridWidth*incriment)/2;
-        float xEuler = -0.8f;
-        //float yEuler = (gridHeight*incriment)/2;
-        float yEuler = -0.45f;
+        float incriment = (_botLeftPosX*2)/gridWidth;
+        
+        float xEuler = -_botLeftPosX;
+        float yEuler = -_botLeftPosY;
+        float yEulerReset = yEuler;
         for (int col = 0; col < gridWidth; col++)
         {
             for (int row = 0; row < gridHeight; row++)
             {
-                meshes[col, row] = new();
-                directions[col, row] = new Vector3(xEuler, yEuler, 1);
+                _meshes[col, row] = new ContactMesh(meshSize); 
+                _directions[col, row] = new Vector3(xEuler, yEuler, 1);
                     
                 yEuler += incriment;
             }
             xEuler += incriment;
-            //yEuler = (gridHeight*incriment)/2;
-            yEuler = -0.45f;
+            yEuler = yEulerReset;
         }
     }
 
@@ -47,68 +70,71 @@ public class RayCamController : MonoBehaviour
         {
             for (int row = 0; row < gridHeight; row++)
             {
-                meshes[col, row].cast(transform, transform.rotation*directions[col, row]);
+                _meshes[col, row].Cast(transform, transform.rotation*_directions[col, row]);
             }
         }
-
     }
 }
 
 public class ContactMesh
 {
-    private Vector3[] vertices = new Vector3[4];
-    private Vector2[] uv = new Vector2[4];
-    private int[] triangles = new int[6];
+    private readonly Vector3[] _vertices = new Vector3[4];
+    private readonly Vector2[] _uv = new Vector2[4];
+    private readonly int[] _triangles = new int[6];
 
-    private GameObject meshObject;
-    private Mesh mesh;
+    private readonly GameObject _meshObject;
+    private readonly MeshRenderer _meshRenderer;
 
-    public void cast(Transform transform, Vector3 rotation)
+    public void Cast(Transform transform, Vector3 rotation)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, rotation, out hit, 20f, 1 << 8))
+        if (Physics.Raycast(transform.position, rotation, out RaycastHit hit, 20f, 1 << 8))
         {
-            meshObject.transform.position = hit.point;
-            meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
+            _meshObject.transform.position = hit.point;
+            _meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
 
             Renderer renderer = hit.transform.gameObject.GetComponent<Renderer>();
-            meshObject.GetComponent<MeshRenderer>().material = renderer.material;
+            _meshRenderer.material = renderer.material;
 
         } else {
-            //print("NoHit");
+            _meshObject.transform.position = transform.position;
+            _meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
         }
     }
 
-    public ContactMesh() {
+    public ContactMesh(float meshSize) {
+        
+        float halfMeshSize = meshSize / 2f;
 
-        vertices[0] = new Vector3(-.2f, -.2f, 0);
-        vertices[1] = new Vector3(-.2f, .2f, 0);
-        vertices[2] = new Vector3(.2f, .2f, 0);
-        vertices[3] = new Vector3(.2f, -.2f, 0);
+        _vertices[0] = new Vector3(-halfMeshSize, -halfMeshSize, 0);
+        _vertices[1] = new Vector3(-halfMeshSize, halfMeshSize, 0);
+        _vertices[2] = new Vector3(halfMeshSize, halfMeshSize, 0);
+        _vertices[3] = new Vector3(halfMeshSize, -halfMeshSize, 0);
 
-        triangles[0] = 0;
-        triangles[1] = 1;
-        triangles[2] = 2;
+        _triangles[0] = 0;
+        _triangles[1] = 1;
+        _triangles[2] = 2;
 
-        triangles[3] = 0;
-        triangles[4] = 2;
-        triangles[5] = 3;
+        _triangles[3] = 0;
+        _triangles[4] = 2;
+        _triangles[5] = 3;
 
-        uv[0] = new Vector2(0, 0);
-        uv[1] = new Vector2(0, 1);
-        uv[2] = new Vector2(1, 1);
-        uv[3] = new Vector2(1, 0);
+        _uv[0] = new Vector2(0, 0);
+        _uv[1] = new Vector2(0, 1);
+        _uv[2] = new Vector2(1, 1);
+        _uv[3] = new Vector2(1, 0);
 
-        mesh = new Mesh();
-        mesh.name = "Custom mesh";
+        Mesh _mesh = new Mesh();
+        _mesh.name = "Custom mesh";
 
-        meshObject = new GameObject("Mesh object", typeof(MeshRenderer), typeof(MeshFilter));
+        _meshObject = new GameObject("Mesh object", typeof(MeshRenderer), typeof(MeshFilter));
 
-        meshObject.GetComponent<MeshFilter>().mesh = mesh;
+        _meshObject.GetComponent<MeshFilter>().mesh = _mesh;
+        
+        _meshRenderer = _meshObject.GetComponent<MeshRenderer>();
 
-        mesh.vertices = vertices;
-        mesh.uv = uv;
-        mesh.triangles = triangles;
+        _mesh.vertices = _vertices;
+        _mesh.uv = _uv;
+        _mesh.triangles = _triangles;
     }
 
 }
