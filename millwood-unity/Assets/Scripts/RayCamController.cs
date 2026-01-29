@@ -9,44 +9,49 @@ public class RayCamController : MonoBehaviour
 {
 
     [Header("Entity \"RayCam\" parameters")]
-    [SerializeField] private int gridWidth;
-    [SerializeField] private int gridHeight;
+    [SerializeField] private int gridWidth = 16;
+    [SerializeField] private int gridHeight = 9;
 
-    private LayerMask layerMask;
-
-    private ContactMesh contactMesh;
-
-    [SerializeField] Transform contactMeshTransform;
+    private ContactMesh[,] meshes;
+    private Vector3[,] directions;
 
     private void Awake()
     {
-        layerMask = 1 << 8;
+        meshes = new ContactMesh[gridWidth, gridHeight];
+        directions = new Vector3[gridWidth, gridHeight];
+
+        float incriment = 0.1f;
+
+        //float xEuler = (gridWidth*incriment)/2;
+        float xEuler = -0.8f;
+        //float yEuler = (gridHeight*incriment)/2;
+        float yEuler = -0.45f;
+        for (int col = 0; col < gridWidth; col++)
+        {
+            for (int row = 0; row < gridHeight; row++)
+            {
+                meshes[col, row] = new();
+                directions[col, row] = new Vector3(xEuler, yEuler, 1);
+                    
+                yEuler += incriment;
+            }
+            xEuler += incriment;
+            //yEuler = (gridHeight*incriment)/2;
+            yEuler = -0.45f;
+        }
     }
 
-    private void Start()
-    {
-        contactMesh = new();
-    }
     void FixedUpdate()
     {
-
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, fwd, out hit, 10f, layerMask))
+        for (int col = 0; col < gridWidth; col++)
         {
-
-            Renderer renderer = hit.transform.gameObject.GetComponent<Renderer>();
-            contactMesh.getObject().GetComponent<MeshRenderer>().material = renderer.material;
-
-            contactMesh.updateTransform(hit.point, transform.rotation);
-
-        } else {
-            print("NoHit");
+            for (int row = 0; row < gridHeight; row++)
+            {
+                meshes[col, row].cast(transform, transform.rotation*directions[col, row]);
+            }
         }
 
     }
-
 }
 
 public class ContactMesh
@@ -57,6 +62,22 @@ public class ContactMesh
 
     private GameObject meshObject;
     private Mesh mesh;
+
+    public void cast(Transform transform, Vector3 rotation)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, rotation, out hit, 20f, 1 << 8))
+        {
+            meshObject.transform.position = hit.point;
+            meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
+
+            Renderer renderer = hit.transform.gameObject.GetComponent<Renderer>();
+            meshObject.GetComponent<MeshRenderer>().material = renderer.material;
+
+        } else {
+            //print("NoHit");
+        }
+    }
 
     public ContactMesh() {
 
@@ -78,17 +99,6 @@ public class ContactMesh
         uv[2] = new Vector2(1, 1);
         uv[3] = new Vector2(1, 0);
 
-        createMesh();
-    }
-
-    public void updateTransform(Vector3 position, Quaternion rotation)
-    {
-        meshObject.transform.position = position;
-        meshObject.transform.rotation = rotation;
-    }
-
-    public void createMesh()
-    {
         mesh = new Mesh();
         mesh.name = "Custom mesh";
 
@@ -101,9 +111,4 @@ public class ContactMesh
         mesh.triangles = triangles;
     }
 
-    public GameObject getObject()
-    {
-        return meshObject;
-    }
-        
 }
