@@ -14,18 +14,8 @@ public class RayCamController : MonoBehaviour
     [SerializeField] private int gridHeight;
     
     [SerializeField] private float meshSize;
-
-    /*
-     * vertical fov degree: halfCameraFOV
-     * horizontal fov degree: arctan(tan(verticalFovDegree)*(16/9))
-     */
     
-    
-    // [Range(-2.0f, 0f)] public float bottomLeftRayX;
-    // private float bottomLeftRayX = -1.05f;
-    // [Range(-2.0f, 0f)] public float bottomLeftRayY;
-    // private float bottomLeftRayY = -0.6f;
-    // [Range(0.0f, 1.0f)] public float rayPositionIncrement;
+    [SerializeField] private float renderDistance;
 
     private float _topFovAngle;
     private float _botLeftPosY;
@@ -54,7 +44,7 @@ public class RayCamController : MonoBehaviour
         {
             for (int row = 0; row < gridHeight; row++)
             {
-                _meshes[col, row] = new ContactMesh(meshSize); 
+                _meshes[col, row] = new ContactMesh(meshSize, renderDistance); 
                 _directions[col, row] = new Vector3(xEuler, yEuler, 1);
                     
                 yEuler += incriment;
@@ -84,10 +74,12 @@ public class ContactMesh
 
     private readonly GameObject _meshObject;
     private readonly MeshRenderer _meshRenderer;
+    
+    private readonly float renderDistance;
 
     public void Cast(Transform transform, Vector3 rotation)
     {
-        if (Physics.Raycast(transform.position, rotation, out RaycastHit hit, 20f, 1 << 8))
+        if (Physics.Raycast(transform.position, rotation, out RaycastHit hit, renderDistance, 1 << 8))
         {
             _meshObject.transform.position = hit.point;
             _meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
@@ -101,8 +93,10 @@ public class ContactMesh
         }
     }
 
-    public ContactMesh(float meshSize) {
-        
+    public ContactMesh(float meshSize, float renderDistance)
+    {
+
+        this.renderDistance = renderDistance;
         float halfMeshSize = meshSize / 2f;
 
         _vertices[0] = new Vector3(-halfMeshSize, -halfMeshSize, 0);
