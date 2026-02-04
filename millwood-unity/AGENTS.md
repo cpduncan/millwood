@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Entities
 - Active game object:
-  - Name: PlayerBody
+  - Name: Body
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Entities
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
