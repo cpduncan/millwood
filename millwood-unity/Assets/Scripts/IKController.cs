@@ -9,16 +9,36 @@ public class IKController : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float stepDepth;
     [SerializeField] private float stepDistance;
+    [SerializeField] private float stepSpeed;
+
+    private bool stepping = false;
+    private Vector3 goalPosition;
     
     private void Update()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, stepDepth, ~(1 << 8)))
+        if (!stepping)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, stepDepth, ~(1 << 8)))
+            {
+                goalPosition = hit.point;
+            }
+            if (Vector3.Distance(goalPosition, target.position) > stepDistance)
+            {
+                stepping = true;
+            }
+        }
+        else
         {
             target.position = Vector3.Lerp(
                 target.position,
-                hit.point,
-                Time.deltaTime * 10f
+                goalPosition,
+                Time.deltaTime * stepSpeed
             );
+            
+            if (Vector3.Distance(goalPosition, target.position) < .1f)
+            {
+                stepping = false;
+            }
         }
     }
 }
