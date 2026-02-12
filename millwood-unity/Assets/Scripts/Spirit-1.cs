@@ -97,13 +97,12 @@ public class Spirit1 : MonoBehaviour
                 _targets[i].transform.position = Vector3.MoveTowards(_targets[i].transform.position,
                     _footIdeals[i], speed * 3 * Time.deltaTime);
                 
-                // sin function for step height, the half-period is (stepInitiateDistance + stepOvershootDistance)
+                // sin function for step height. half period should be fixed to be:
+                // (stepInitiateDistance + stepOvershootDistance)
                 
-                //might be wrong 
                 _stepProgress[i] += Time.deltaTime * speed * 3; 
                 _stepProgress[i] = Mathf.Clamp01(_stepProgress[i]);
                 
-                // _targets[i].transform.position += new Vector3(0, Mathf.Sin(Mathf.PI * _stepProgress[i]) * stepHeight, 0);
                 float height = Mathf.Sin(Mathf.PI * _stepProgress[i]) * stepHeight;
                 
                 _targets[i].transform.position += Vector3.up * height;
@@ -120,12 +119,12 @@ public class Spirit1 : MonoBehaviour
         {
             RaycastHit hit;
             if (Physics.Raycast(
-                    _legs[i].transform.position,
+                    _legs[i].transform.position + (transform.forward * stepOvershotDistance),
                     transform.TransformDirection(Vector3.down),
                     out hit,
                     (jointNum-1) * boneLength, 
                     ~(1 << 8)))
-            { _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance); }
+            { _footIdeals[i] = hit.point; }
             else
             { _footIdeals[i] = _legs[i].transform.position + new Vector3(0, -jointNum * boneLength, 0); }
             
