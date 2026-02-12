@@ -10,27 +10,29 @@ public class Spirit1 : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [Header("Parameters")]
     [SerializeField] private float speed;
+    [SerializeField] private float stepHeight;
     [SerializeField] private float stepInitiateDistance;
     [SerializeField] private float stepOvershotDistance;
     
     [SerializeField] private int jointNum;
     [SerializeField] private float boneLength;
     
-    [SerializeField] private Transform head;
-    [SerializeField] private float headHeight;
+    [SerializeField] private Transform body;
+    [SerializeField] private float bodyHeight;
     
-    private Quaternion originalHeadRotation;
+    private Quaternion originalBodyRotation;
     
     private GameObject[] _legs = new GameObject[4];
     private GameObject[] _targets = new GameObject[4];
     private Vector3[] _footIdeals = new Vector3[4];
     private bool[] _stepping = new bool[4]{false, false, false, false};
+    private float[] _stepProgress = new float[4];
 
-    void Update()
+    void FixedUpdate()
     {
         transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
-        head.LookAt(playerTransform);
-        head.transform.rotation *= originalHeadRotation;
+        body.LookAt(playerTransform);
+        body.transform.rotation *= originalBodyRotation;
         
         transform.position += speed * Time.deltaTime
                               * new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
@@ -42,18 +44,25 @@ public class Spirit1 : MonoBehaviour
         else
         { attemptInitiateSteps(); }
 
-        // head positioned at avg step height + head height field value
+        // body positioned at avg step height + body height field value
         float averageStepHeight = 0;
+        int groundedFootCount = 0;
         for (int i = 0; i < 4; i++)
-        { averageStepHeight += _footIdeals[i].y; }
-        averageStepHeight /= 4;
-        transform.position = new Vector3(transform.position.x, headHeight + averageStepHeight, transform.position.z);
+        {
+            if (!_stepping[i])
+            {
+                groundedFootCount++;
+                averageStepHeight += _footIdeals[i].y;
+            }
+        }
+        averageStepHeight /= groundedFootCount;
+        transform.position = new Vector3(transform.position.x, bodyHeight + averageStepHeight, transform.position.z);
 
     }
 
     private void Awake()
     {
-        originalHeadRotation = head.rotation;
+        originalBodyRotation = body.rotation;
         
         // inits top joints and foot targets to respective arrays: (_legs and _targets)
         _legs[0] = NewLeg(0, new Vector3(-1, 0, -1));
@@ -70,7 +79,9 @@ public class Spirit1 : MonoBehaviour
                 !(_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3]))
             {
                 _stepping[i] = true;
+                _stepProgress[i] = 0f;
                 _stepping[(i+2)%4] = true;
+                _stepProgress[(i+2)%4] = 0f;
             }
         }
     }
@@ -84,6 +95,17 @@ public class Spirit1 : MonoBehaviour
                 _targets[i].transform.position = Vector3.MoveTowards(_targets[i].transform.position,
                     _footIdeals[i], speed * 3 * Time.deltaTime);
                 
+                // sin function for step height, the half-period is (stepInitiateDistance + stepOvershootDistance)
+                
+                //might be wrong 
+                _stepProgress[i] += Time.deltaTime * speed * 3; 
+                _stepProgress[i] = Mathf.Clamp01(_stepProgress[i]);
+                
+                // _targets[i].transform.position += new Vector3(0, Mathf.Sin(Mathf.PI * _stepProgress[i]) * stepHeight, 0);
+                float height = Mathf.Sin(Mathf.PI * _stepProgress[i]) * stepHeight;
+                
+                _targets[i].transform.position += Vector3.up * height;
+                    
                 if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) < .2f)
                 { _stepping[i] = false; }
             }

@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 1344792047}
   - component: {fileID: 1344792046}
   m_Layer: 8
-  m_Name: Head
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,12 +876,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   playerTransform: {fileID: 1734336533}
   speed: 5
+  stepHeight: 0.25
   stepInitiateDistance: 2
   stepOvershotDistance: 1
   jointNum: 3
   boneLength: 1.5
-  head: {fileID: 1344792049}
-  headHeight: 1.5
+  body: {fileID: 1344792049}
+  bodyHeight: 2
 --- !u!1 &1734336532
 GameObject:
   m_ObjectHideFlags: 0
