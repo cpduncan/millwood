@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI, Entities
 - Active game object:
-  - Name: Wall
+  - Name: Spirit1
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Entities
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

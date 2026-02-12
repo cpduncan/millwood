@@ -17,6 +17,8 @@ public class Spirit1 : MonoBehaviour
     [SerializeField] private float boneLength;
     
     [SerializeField] private Transform head;
+    [SerializeField] private float headHeight;
+    
     private Quaternion originalHeadRotation;
     
     private GameObject[] _legs = new GameObject[4];
@@ -33,39 +35,59 @@ public class Spirit1 : MonoBehaviour
         transform.position += speed * Time.deltaTime
                               * new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
 
+        // Moving IK Targets to ideal step locations
         findFootIdeals();
-
-        if (!(_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3]))
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) > stepInitiateDistance && 
-                    !(_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3]))
-                {
-                    _stepping[i] = true;
-                    _stepping[(i+2)%4] = true;
-                    print("Foot " + i + " stepping = true");
-                }
-            }
-        }
+        if (_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3])
+        { moveTargets(); }
         else
+        { attemptInitiateSteps(); }
+
+        // head positioned at avg step height + head height field value
+        float averageStepHeight = 0;
+        for (int i = 0; i < 4; i++)
+        { averageStepHeight += _footIdeals[i].y; }
+        averageStepHeight /= 4;
+        transform.position = new Vector3(transform.position.x, headHeight + averageStepHeight, transform.position.z);
+
+    }
+
+    private void Awake()
+    {
+        originalHeadRotation = head.rotation;
+        
+        // inits top joints and foot targets to respective arrays: (_legs and _targets)
+        _legs[0] = NewLeg(0, new Vector3(-1, 0, -1));
+        _legs[1] = NewLeg(1, new Vector3(-1, 0, 1));
+        _legs[2] = NewLeg(2, new Vector3(1, 0, 1));
+        _legs[3] = NewLeg(3, new Vector3(1, 0, -1));
+    }
+
+    private void attemptInitiateSteps()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 4; i++)
+            if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) > stepInitiateDistance && 
+                !(_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3]))
             {
-                if (_stepping[i])
-                {
-                    print("Moving " + i);
-                    _targets[i].transform.position = Vector3.MoveTowards(_targets[i].transform.position,
-                        _footIdeals[i], speed * 3 * Time.deltaTime);
-                    if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) < .2f)
-                    {
-                        _stepping[i] = false;
-                        print("Foot " + i + " stepping = false");
-                    }
-                }
+                _stepping[i] = true;
+                _stepping[(i+2)%4] = true;
             }
         }
-
+    }
+    
+    private void moveTargets()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (_stepping[i])
+            {
+                _targets[i].transform.position = Vector3.MoveTowards(_targets[i].transform.position,
+                    _footIdeals[i], speed * 3 * Time.deltaTime);
+                
+                if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) < .2f)
+                { _stepping[i] = false; }
+            }
+        }
     }
 
     void findFootIdeals()
@@ -74,23 +96,14 @@ public class Spirit1 : MonoBehaviour
         {
             RaycastHit hit;
             if (Physics.Raycast(_legs[i].transform.position,
-                    transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
-            {
-                _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance);
-            }
+                    transform.TransformDirection(Vector3.down), out hit, (jointNum-1) * boneLength))
+            { _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance); }
+            else
+            { _footIdeals[i] = _legs[i].transform.position + new Vector3(0, -jointNum * boneLength, 0); }
+            
+            // figure out a default position for legs
         }
         
-    }
-
-    private void Awake()
-    {
-        originalHeadRotation = head.rotation;
-        
-        // inits top leg joints and foot targets to respective arrays (_legs and _targets)
-        _legs[0] = NewLeg(0, new Vector3(-1, 0, -1));
-        _legs[1] = NewLeg(1, new Vector3(-1, 0, 1));
-        _legs[2] = NewLeg(2, new Vector3(1, 0, 1));
-        _legs[3] = NewLeg(3, new Vector3(1, 0, -1));
     }
 
     private GameObject NewLeg(int index, Vector3 position)
