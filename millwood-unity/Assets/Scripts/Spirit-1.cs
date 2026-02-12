@@ -117,8 +117,12 @@ public class Spirit1 : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             RaycastHit hit;
-            if (Physics.Raycast(_legs[i].transform.position,
-                    transform.TransformDirection(Vector3.down), out hit, (jointNum-1) * boneLength))
+            if (Physics.Raycast(
+                    _legs[i].transform.position,
+                    transform.TransformDirection(Vector3.down),
+                    out hit,
+                    (jointNum-1) * boneLength, 
+                    ~(8<<1)))
             { _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance); }
             else
             { _footIdeals[i] = _legs[i].transform.position + new Vector3(0, -jointNum * boneLength, 0); }
@@ -132,15 +136,20 @@ public class Spirit1 : MonoBehaviour
     {
         GameObject[] joints = new GameObject[jointNum];
         
-        joints[0] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        joints[0].name = "Joint 0";
+        joints[0] = new GameObject("Joint 0");
         joints[0].transform.SetParent(transform, false); 
         joints[0].transform.localScale = new Vector3(.25f, .25f, .25f);
         joints[0].transform.position = transform.position + position;
         
         for (int i = 1; i < jointNum; i++) {
-            joints[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            joints[i].name = "Joint " + i;
+            
+            GameObject legPiece = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            legPiece.transform.SetParent(joints[i - 1].transform, false);
+            legPiece.transform.position += new Vector3(0, -boneLength * .5f, 0);
+            legPiece.transform.localScale += new Vector3(0, 4f, 0);
+            legPiece.layer = 8;
+
+            joints[i] = new GameObject("Joint " + i);
             joints[i].transform.SetParent(joints[i - 1].transform, false); 
             joints[i].transform.position += new Vector3(0, -boneLength, 0);
         }
