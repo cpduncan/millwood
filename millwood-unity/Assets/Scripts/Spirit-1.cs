@@ -17,6 +17,8 @@ public class Spirit1 : MonoBehaviour
     [SerializeField] private int jointNum;
     [SerializeField] private float boneLength;
     
+    [SerializeField] private Material legMaterial;
+    
     [SerializeField] private Transform body;
     [SerializeField] private float bodyHeight;
     
@@ -147,6 +149,7 @@ public class Spirit1 : MonoBehaviour
             legPiece.transform.SetParent(joints[i - 1].transform, false);
             legPiece.transform.position += new Vector3(0, -boneLength * .5f, 0);
             legPiece.transform.localScale += new Vector3(0, 4f, 0);
+            legPiece.GetComponent<Renderer>().material = legMaterial;
             legPiece.layer = 8;
 
             joints[i] = new GameObject("Joint " + i);

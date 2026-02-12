@@ -881,6 +881,7 @@ MonoBehaviour:
   stepOvershotDistance: 1
   jointNum: 3
   boneLength: 1.5
+  legMaterial: {fileID: 2100000, guid: 276dc3b4b6343bb42bee05401bebc385, type: 2}
   body: {fileID: 1344792049}
   bodyHeight: 2
 --- !u!1 &1734336532
@@ -956,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d012fa5dc7ebe3045be15bab52ee9039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
-  walkSpeed: 8
+  walkSpeed: 12
   gravityMultiplier: 1
   mouseSensitivity: 0.08
   upDownLookRange: 90
