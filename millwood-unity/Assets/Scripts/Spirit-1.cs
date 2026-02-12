@@ -30,7 +30,8 @@ public class Spirit1 : MonoBehaviour
         head.LookAt(playerTransform);
         head.transform.rotation *= originalHeadRotation;
         
-        transform.position += new Vector3(transform.forward.x, 0, transform.forward.z).normalized * speed;
+        transform.position += speed * Time.deltaTime
+                              * new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
 
         findFootIdeals();
 
@@ -42,6 +43,7 @@ public class Spirit1 : MonoBehaviour
                     !(_stepping[0] || _stepping[1] || _stepping[2] || _stepping[3]))
                 {
                     _stepping[i] = true;
+                    _stepping[(i+2)%4] = true;
                     print("Foot " + i + " stepping = true");
                 }
             }
@@ -54,7 +56,7 @@ public class Spirit1 : MonoBehaviour
                 {
                     print("Moving " + i);
                     _targets[i].transform.position = Vector3.MoveTowards(_targets[i].transform.position,
-                        _footIdeals[i], 10f * Time.deltaTime);
+                        _footIdeals[i], speed * 3 * Time.deltaTime);
                     if (Vector3.Distance(_targets[i].transform.position, _footIdeals[i]) < .2f)
                     {
                         _stepping[i] = false;
@@ -74,7 +76,7 @@ public class Spirit1 : MonoBehaviour
             if (Physics.Raycast(_legs[i].transform.position,
                     transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
             {
-                _footIdeals[i] = hit.point;
+                _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance);
             }
         }
         
@@ -114,8 +116,7 @@ public class Spirit1 : MonoBehaviour
         
         script.ChainLength = jointNum - 1;
         
-        GameObject pole = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        pole.name = "Pole " + index;
+        GameObject pole = new GameObject("Pole " + index);
         pole.transform.SetParent(transform, false);
         pole.transform.localScale = new Vector3(.25f, .25f, .25f);
         pole.transform.position = transform.position + (position * (jointNum-1)) + (transform.up * boneLength);
