@@ -121,6 +121,7 @@ public class ContactMesh
         _mesh.name = "Custom mesh";
 
         _meshObject = new GameObject("Mesh object", typeof(MeshRenderer), typeof(MeshFilter));
+        _meshObject.layer = 2;
 
         _meshObject.GetComponent<MeshFilter>().mesh = _mesh;
         

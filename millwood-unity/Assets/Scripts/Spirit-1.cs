@@ -122,7 +122,7 @@ public class Spirit1 : MonoBehaviour
                     transform.TransformDirection(Vector3.down),
                     out hit,
                     (jointNum-1) * boneLength, 
-                    ~(8<<1)))
+                    ~(1 << 8)))
             { _footIdeals[i] = hit.point + (transform.forward * stepOvershotDistance); }
             else
             { _footIdeals[i] = _legs[i].transform.position + new Vector3(0, -jointNum * boneLength, 0); }
