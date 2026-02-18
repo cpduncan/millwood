@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,27 +19,45 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
 
-
     private Vector3 currentMovement;
     private float verticalRotation;
     private float CurrentSpeed => walkSpeed;
 
+    private void OnEnable()
+    {
+        playerInputHandler.Interact += EventInteract;
+        playerInputHandler.Shoot += EventShoot;
+        playerInputHandler.Mill += EventMill;
+    }
 
-    // Start is called before the first frame update
+    private void EventInteract()
+    {
+        Debug.Log("Interact");
+    }
+
+    private void EventShoot()
+    {
+        Debug.Log("Shoot");
+    }
+
+    private void EventMill()
+    {
+        Debug.Log("Mill");
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         HandleMovement();
         HandleRotation();
     }
-
+    
+    // --------------------------------------------------------------
 
     private Vector3 CalculateWorldDirection()
     {
@@ -46,7 +65,6 @@ public class FirstPersonController : MonoBehaviour
         Vector3 worldDirection = transform.TransformDirection(inputDirection);
         return worldDirection.normalized;
     }
-
 
     private void HandleGravity()
     {
