@@ -88,7 +88,7 @@ public class ContactMesh
             _meshRenderer.material = renderer.material;
 
         } else {
-            _meshObject.transform.position = transform.position;
+            _meshObject.transform.position = transform.position - transform.forward;
             _meshObject.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
         }
     }
