@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities
 - Active game object:
-  - Name: weapon-shotgun
+  - Name: Spirit1
   - Tag: Untagged
-  - Layer: Player
+  - Layer: Entities
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -881,7 +881,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -895,8 +895,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 20
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -976,10 +976,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerTransform: {fileID: 1734336533}
-  speed: 2
+  speed: 4
   stepHeight: 0.25
   stepInitiateDistance: 1
-  stepOvershotDistance: 1
+  stepOvershotDistance: 2
   jointNum: 3
   boneLength: 1.5
   legMaterial: {fileID: 2100000, guid: 276dc3b4b6343bb42bee05401bebc385, type: 2}
