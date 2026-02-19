@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 76e2308e2d725ab47a622e06962ec597, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c892bc0017376044db4d83c9932d32a9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: cbb70f7c28c933f41abfcb8c9ad83b8c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61c2b8b7b08a2e14aa9331b3200db26b, type: 2}
+      objectReference: {fileID: 2100000, guid: e1902f697465fe44db5e1eed4b38ee32, type: 2}
     - target: {fileID: 65702495048144492, guid: cbb70f7c28c933f41abfcb8c9ad83b8c, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -1170,11 +1170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d012fa5dc7ebe3045be15bab52ee9039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
-  walkSpeed: 12
-  gravityMultiplier: 1
   mouseSensitivity: 0.08
   upDownLookRange: 90
-  characterController: {fileID: 1734336534}
   mainCamera: {fileID: 1572740056}
   playerInputHandler: {fileID: 1228896372}
 --- !u!114 &1734336537
@@ -1369,7 +1366,7 @@ PrefabInstance:
     - target: {fileID: 8417361359673230750, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 972fc944fd6bb844eacba36e33ce3545, type: 2}
+      objectReference: {fileID: 2100000, guid: 84ad362e4beb0554aae6cbaf884fc52d, type: 2}
     - target: {fileID: 8744755526890551863, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
       propertyPath: m_Layer
       value: 3
