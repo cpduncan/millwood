@@ -12,6 +12,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
+    [SerializeField] private PlayerDataController playerData;
 
     private QuakeCharacterController _quakeCharacterController = null;
     
@@ -35,16 +36,19 @@ public class FirstPersonController : MonoBehaviour
     private void EventInteract()
     {
         Debug.Log("Interact");
+        playerData.updateHealth(-1);
     }
 
     private void EventShoot()
     {
         Debug.Log("Shoot");
+        playerData.updateAmmo(-1);
     }
     
     private void EventMill()
     {
         Debug.Log("Mill");
+        playerData.updateHealth(1, 200);
     }
 
     private void EventJump()

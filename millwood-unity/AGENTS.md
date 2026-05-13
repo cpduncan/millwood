@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities
 - Active game object:
-  - Name: Spirit1
+  - Name: UIAmmoText
   - Tag: Untagged
-  - Layer: Entities
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
