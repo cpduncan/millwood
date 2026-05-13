@@ -18,9 +18,14 @@ public class Spirit1 : MonoBehaviour
     [SerializeField] private float boneLength;
     
     [SerializeField] private Material legMaterial;
-    
     [SerializeField] private Transform body;
     [SerializeField] private float bodyHeight;
+    
+    // ===
+
+    [SerializeField] private int health;
+    
+    // ===
     
     private Quaternion originalBodyRotation;
     
@@ -60,6 +65,29 @@ public class Spirit1 : MonoBehaviour
         averageStepHeight /= groundedFootCount;
         transform.position = new Vector3(transform.position.x, bodyHeight + averageStepHeight, transform.position.z);
 
+    }
+
+    public void Damage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        foreach  (GameObject leg in _legs)
+        {
+            Destroy(leg);            
+        }
+        foreach  (GameObject target in _targets)
+        {
+            Destroy(target);            
+        }
+        Destroy(gameObject);
     }
 
     private void Awake()

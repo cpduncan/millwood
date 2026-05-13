@@ -51,12 +51,13 @@ public class Weapon : MonoBehaviour
         //RayCast
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
-            Debug.Log(rayHit.collider.name);
+            Debug.Log(Time.timeAsRational + ": " + rayHit.collider.name);
 
 
             if (rayHit.collider.CompareTag("Shootable"))
             {
-                Debug.Log("Shot a Shootable!");
+                Debug.Log(Time.timeAsRational +": Shot a Shootable!");
+                rayHit.collider.SendMessageUpwards("Damage", damage);
             }
         }
 

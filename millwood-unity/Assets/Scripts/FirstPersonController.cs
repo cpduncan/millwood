@@ -42,7 +42,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void EventShoot()
     {
-        Debug.Log("Shoot");
         weapon.Shoot();
     }
     
