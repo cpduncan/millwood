@@ -4,11 +4,11 @@
 - Active scene:
   - Name: RenderingTest
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Shootable
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities
 - Active game object:
-  - Name: UIAmmoText
+  - Name: TestWeapon
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

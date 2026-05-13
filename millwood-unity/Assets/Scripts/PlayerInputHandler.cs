@@ -16,6 +16,7 @@ public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] private string shoot = "Shoot";
     [SerializeField] private string mill = "Mill";
     [SerializeField] private string jump = "Jump";
+    [SerializeField] private string reload = "Reload";
 
     private InputAction movementAction;
     private InputAction rotationAction;
@@ -23,6 +24,7 @@ public class PlayerInputHandler : MonoBehaviour {
     private InputAction shootAction;
     private InputAction millAction;
     private InputAction jumpAction;
+    private InputAction reloadAction;
 
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
@@ -31,6 +33,7 @@ public class PlayerInputHandler : MonoBehaviour {
     public event Action Shoot;
     public event Action Mill;
     public event Action Jump;
+    public event Action Reload;
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class PlayerInputHandler : MonoBehaviour {
         shootAction = mapReference.FindAction(shoot);
         millAction = mapReference.FindAction(mill);
         jumpAction = mapReference.FindAction(jump);
+        reloadAction = mapReference.FindAction(reload);
 
         SubscribeActionValuesToInputEvents();
     }
@@ -59,6 +63,7 @@ public class PlayerInputHandler : MonoBehaviour {
         shootAction.performed += _ => Shoot?.Invoke();
         millAction.performed += _ => Mill?.Invoke();
         jumpAction.performed += _ => Jump?.Invoke();
+        reloadAction.performed += _ => Reload?.Invoke();
     }
 
     private void OnEnable()
