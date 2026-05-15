@@ -11,11 +11,12 @@ public class PlayerDataController : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
     
-    [Header("Reference Objects")]
+    [Header("UI Objects")]
     [SerializeField] private TextMeshProUGUI uiAmmoText;
     [SerializeField] private TextMeshProUGUI uiHealthText;
+    [SerializeField] private TextMeshProUGUI uiMagText;
     
-    public int getAmmo() { return ammo; }
+    public int GetAmmo() { return ammo; }
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class PlayerDataController : MonoBehaviour
     {
         ammo = set;
         uiAmmoText.text = ammo.ToString();
+    }
+
+    public void SetMagText(String set)
+    {
+        uiMagText.text = set;
     }
 
     public void SetHealth(int set)

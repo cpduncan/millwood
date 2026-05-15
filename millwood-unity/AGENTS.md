@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox
 - Active game object:
-  - Name: TestWeapon
+  - Name: hand
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Player
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

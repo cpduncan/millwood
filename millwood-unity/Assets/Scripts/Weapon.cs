@@ -1,47 +1,47 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor;
+using UnityEditor.VersionControl;
 
 
 public class Weapon : MonoBehaviour
 {
-    
-    //Gun stats
-    public int damage;
-    public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
-    public bool allowButtonHold;
-    int bulletsLeft, bulletsShot;
 
+    [SerializeField] private WeaponData _weaponData;
+    [SerializeField] private Transform cameraTransform;
 
-    //bools 
+    private GameObject model;
+
+    int bulletsLeft;
     bool shooting, readyToShoot, reloading;
 
-
-    //Reference
     public Camera fpsCam;
-    public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     
     [SerializeField] private PlayerDataController playerData;
-
-
-    //Graphics
     public TextMeshProUGUI text;
 
 
     private void Awake()
     {
-        bulletsLeft = magazineSize;
+        bulletsLeft = _weaponData.magazineSize;
+        model = Instantiate(_weaponData.model, cameraTransform);
+        model.transform.position += _weaponData.modelOffsetPosition;
+        model.transform.rotation *= _weaponData.modelOffsetRotation;
+        model.transform.localScale *= _weaponData.modelOffsetScale;
+        model.GetComponentInChildren<MeshRenderer>().material = _weaponData.material;
+        text.SetText(bulletsLeft + " / " + _weaponData.magazineSize);
     }
+    
     public void Shoot()
     {
         if (bulletsLeft == 0) return;
         
 
         //Spread
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
+        float x = Random.Range(-_weaponData.spread, _weaponData.spread);
+        float y = Random.Range(-_weaponData.spread, _weaponData.spread);
 
 
         //Calculate Direction with Spread
@@ -49,46 +49,45 @@ public class Weapon : MonoBehaviour
 
 
         //RayCast
-        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
+        Debug.Log("Bang!");
+        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, _weaponData.range, whatIsEnemy))
         {
             Debug.Log(Time.timeAsRational + ": " + rayHit.collider.name);
 
-
-            if (rayHit.collider.CompareTag("Shootable"))
-            {
+            // if (rayHit.collider.CompareTag("Shootable"))
+            // {
                 Debug.Log(Time.timeAsRational +": Shot a Shootable!");
-                rayHit.collider.SendMessageUpwards("Damage", damage);
-            }
+                rayHit.collider.SendMessageUpwards("Damage", _weaponData.damage);
+            // }
         }
 
         bulletsLeft--;
-        bulletsShot--;
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        text.SetText(bulletsLeft + " / " + _weaponData.magazineSize);
     }
     public void Reload()
     {
-        if (playerData.getAmmo() == 0) return;
+        if (playerData.GetAmmo() == 0) return;
         
         reloading = true;
-        Invoke("ReloadFinished", reloadTime);
+        Invoke("ReloadFinished", _weaponData.reloadTimeSeconds);
     }
     private void ReloadFinished()
     {
-        playerData.ChangeAmmo(-magazineSize);
+        playerData.ChangeAmmo(-_weaponData.magazineSize);
         
-        int ammo = playerData.getAmmo();
+        int ammo = playerData.GetAmmo();
         if (ammo < 0)
         {
-            bulletsLeft = ammo + magazineSize;
+            bulletsLeft = ammo + _weaponData.magazineSize;
             playerData.SetAmmo(0);
         }
         else
         {
-            bulletsLeft = magazineSize;
+            bulletsLeft = _weaponData.magazineSize;
         }
         
         reloading = false;
         
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        text.SetText(bulletsLeft + " / " + _weaponData.magazineSize);
     }
 }
