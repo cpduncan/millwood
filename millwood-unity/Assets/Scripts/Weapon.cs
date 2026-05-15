@@ -22,7 +22,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private PlayerDataController playerData;
     public TextMeshProUGUI text;
 
-
     private void Awake()
     {
         bulletsLeft = _weaponData.magazineSize;
@@ -64,6 +63,7 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
         text.SetText(bulletsLeft + " / " + _weaponData.magazineSize);
     }
+    
     public void Reload()
     {
         if (playerData.GetAmmo() == 0) return;
@@ -71,6 +71,7 @@ public class Weapon : MonoBehaviour
         reloading = true;
         Invoke("ReloadFinished", _weaponData.reloadTimeSeconds);
     }
+    
     private void ReloadFinished()
     {
         playerData.ChangeAmmo(-_weaponData.magazineSize);
@@ -89,5 +90,12 @@ public class Weapon : MonoBehaviour
         reloading = false;
         
         text.SetText(bulletsLeft + " / " + _weaponData.magazineSize);
+    }
+
+    public int Mill()
+    {
+        Destroy(model);
+        Destroy(_weaponData);
+        return _weaponData.ammoValue;
     }
 }

@@ -47,7 +47,7 @@ public class FirstPersonController : MonoBehaviour
     
     private void EventMill()
     {
-        Debug.Log("Mill");
+        playerData.ChangeAmmo(weapon.Mill());
     }
 
     private void EventReload()

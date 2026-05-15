@@ -32,5 +32,8 @@ public class WeaponData : ScriptableObject
     [SerializeField] public Quaternion modelOffsetRotation;
     [SerializeField] public float modelOffsetScale;
     [SerializeField] public Material material;
-    
+
+    [Header("Milling")]
+    [SerializeField] public int ammoValue;
+
 }
