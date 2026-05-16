@@ -4,7 +4,7 @@ using DitzelGames.FastIK;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Spirit1 : MonoBehaviour
+public class Enemy_Spider : MonoBehaviour
 {
 
     [SerializeField] private Transform playerTransform;

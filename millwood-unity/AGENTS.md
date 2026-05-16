@@ -6,9 +6,9 @@
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Shootable
   - Layers:
-    - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox
+    - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: Canvas
-  - Tag: Untagged
-  - Layer: UI
+  - Name: Enemy_Spider
+  - Tag: Shootable
+  - Layer: 8
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

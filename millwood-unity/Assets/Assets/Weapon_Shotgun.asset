@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   magazineSize: 100
-  damage: 2
+  damage: 5
   spread: 0
   range: 5
   reloadTimeSeconds: 0.5
