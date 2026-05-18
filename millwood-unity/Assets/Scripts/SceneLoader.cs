@@ -7,12 +7,11 @@ public class SceneLoader : MonoBehaviour
 {
     
     [SerializeField] string sceneName;
+    [SerializeField] LoadSceneMode loadSceneMode;
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        SceneManager.LoadScene(sceneName);
-        
+        SceneManager.LoadScene(sceneName, loadSceneMode);
     }
     
 }
