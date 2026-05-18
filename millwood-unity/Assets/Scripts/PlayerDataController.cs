@@ -7,6 +7,7 @@ public class PlayerDataController : MonoBehaviour
 {
 
     [Header("Player Data")]
+    [SerializeField] public Transform _transform;
     [SerializeField] private int ammo;
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;

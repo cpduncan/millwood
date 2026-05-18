@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy_Spider : MonoBehaviour
 {
 
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform overrideTargetTransform;
     [Header("Parameters")]
     [SerializeField] private float speed;
     [SerializeField] private float stepHeight;
@@ -37,8 +37,8 @@ public class Enemy_Spider : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
-        body.LookAt(playerTransform);
+        transform.LookAt(new Vector3(overrideTargetTransform.position.x, transform.position.y, overrideTargetTransform.position.z));
+        body.LookAt(overrideTargetTransform);
         body.transform.rotation *= originalBodyRotation;
         
         transform.position += speed * Time.deltaTime
@@ -99,6 +99,8 @@ public class Enemy_Spider : MonoBehaviour
         _legs[1] = NewLeg(1, new Vector3(-1, 0, 1));
         _legs[2] = NewLeg(2, new Vector3(1, 0, 1));
         _legs[3] = NewLeg(3, new Vector3(1, 0, -1));
+
+        if (overrideTargetTransform.IsUnityNull()) overrideTargetTransform = FindAnyObjectByType<PlayerDataController>()._transform;
     }
 
     private void attemptInitiateSteps()
