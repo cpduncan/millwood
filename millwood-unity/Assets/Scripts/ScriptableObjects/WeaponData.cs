@@ -12,18 +12,12 @@ public class WeaponData : ScriptableObject
     [SerializeField] public float range;
 
     [SerializeField] public float reloadTimeSeconds;
-    // [SerializeField] private float shotCooldownSeconds;
 
-
-    // [SerializeField] private bool burst;
-    // [SerializeField] private float burstLength;
-    // [SerializeField] private float burstCooldownSeconds;
-
-
-    // [SerializeField] private int bulletsPerShot;
-
-
-    // [SerializeField] private bool allowButtonHold;
+    [SerializeField] public bool allowButtonHold;
+    [SerializeField] public float shotCooldownSeconds; // (time between each shot)
+    [SerializeField] public bool burst;
+    [SerializeField] public float burstCooldownSeconds; // (between bursts)
+    [SerializeField] public int bulletsPerShot; // (for shotguns)
 
 
     [Header("Model")]

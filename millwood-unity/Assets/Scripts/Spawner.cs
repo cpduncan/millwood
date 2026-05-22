@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     private void Awake()
     {
         Instantiate(prefab,  transform.position + positionOffset, transform.rotation * rotationOffset);
+        Destroy(gameObject);
     }
 
 

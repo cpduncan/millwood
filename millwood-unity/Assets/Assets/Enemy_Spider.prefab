@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896c3165149760948998d22f0ac164c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerTransform: {fileID: 0}
+  overrideTargetTransform: {fileID: 0}
   speed: 4
   stepHeight: 0.25
   stepInitiateDistance: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   legMaterial: {fileID: 2100000, guid: 276dc3b4b6343bb42bee05401bebc385, type: 2}
   body: {fileID: 4154145071574472722}
   bodyHeight: 2
-  health: 4
+  health: 15
 --- !u!1 &1235969703269488658
 GameObject:
   m_ObjectHideFlags: 0

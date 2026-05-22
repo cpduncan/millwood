@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49d9689cbaa41fe48bf5a47899d91bb5, type: 3}
-  m_Name: Weapon_Shotgun
+  m_Name: Weapon_Rifle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  magazineSize: 2
+  magazineSize: 16
   damage: 1
-  spread: 0.1
-  range: 10
+  spread: 0.01
+  range: 30
   reloadTimeSeconds: 0.5
-  allowButtonHold: 0
-  shotCooldownSeconds: 0.5
+  allowButtonHold: 1
+  shotCooldownSeconds: 0.1
   burst: 0
   burstCooldownSeconds: 0
-  bulletsPerShot: 5
+  bulletsPerShot: 1
   model: {fileID: 919132149155446097, guid: cbb70f7c28c933f41abfcb8c9ad83b8c, type: 3}
   modelOffsetPosition: {x: 0.365, y: -0.31, z: 0.6}
-  modelOffsetRotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+  modelOffsetRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
   modelOffsetScale: 0.05
   material: {fileID: 2100000, guid: 260147f0b52f5c645884c06671b0c7f6, type: 2}
   ammoValue: 10

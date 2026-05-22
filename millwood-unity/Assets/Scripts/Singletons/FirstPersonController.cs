@@ -13,7 +13,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
     [SerializeField] private PlayerDataController playerData;
-    [SerializeField] private Weapon weapon;
+    [SerializeField] private WeaponSlot weaponSlot;
 
     private QuakeCharacterController _quakeCharacterController = null;
     
@@ -23,6 +23,7 @@ public class FirstPersonController : MonoBehaviour
     {
         playerInputHandler.Interact += EventInteract;
         playerInputHandler.Shoot += EventShoot;
+        playerInputHandler.ShootStop += EventShootStop;
         playerInputHandler.Mill += EventMill;
         playerInputHandler.Jump += EventJump;
         playerInputHandler.Reload += EventReload;
@@ -42,18 +43,22 @@ public class FirstPersonController : MonoBehaviour
 
     private void EventShoot()
     {
-        weapon.Shoot();
+        weaponSlot.Shoot();
+    }
+
+    private void EventShootStop()
+    {
+        weaponSlot.ShootStop();
     }
     
     private void EventMill()
     {
-        playerData.ChangeAmmo(weapon.Mill());
-        weapon = null;
+        playerData.ChangeAmmo(weaponSlot.Mill());
     }
 
     private void EventReload()
     {
-        weapon.Reload();
+        weaponSlot.Reload();
     }
     
     private void EventJump()

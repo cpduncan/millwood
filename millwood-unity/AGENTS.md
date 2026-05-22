@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox
 - Active game object:
-  - Name: terrain floot
+  - Name: Sphere
   - Tag: Untagged
-  - Layer: Default
+  - Layer: Entities
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
