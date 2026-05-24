@@ -22,9 +22,9 @@ MonoBehaviour:
   burst: 0
   burstCooldownSeconds: 0
   bulletsPerShot: 1
-  model: {fileID: 919132149155446097, guid: cbb70f7c28c933f41abfcb8c9ad83b8c, type: 3}
-  modelOffsetPosition: {x: 0.365, y: -0.31, z: 0.6}
-  modelOffsetRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  modelOffsetScale: 0.05
+  model: {fileID: 919132149155446097, guid: 4bbf7bfbcd0c0bc4aa33f117fb9f4bf5, type: 3}
+  modelOffsetPosition: {x: 0.46, y: -0.43, z: 1.04}
+  modelOffsetRotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+  modelOffsetScale: 0.4
   material: {fileID: 2100000, guid: 260147f0b52f5c645884c06671b0c7f6, type: 2}
   ammoValue: 10

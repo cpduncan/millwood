@@ -882,6 +882,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
+    - {fileID: -8700617353114198275, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
@@ -1962,6 +1963,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -8700617353114198275, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08989123
@@ -2125,6 +2130,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
+    - {fileID: -8700617353114198275, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec23107a4b3740243acf934baa3282c6, type: 3}
@@ -2389,9 +2395,9 @@ SceneRoots:
   - {fileID: 1734336533}
   - {fileID: 1218365263}
   - {fileID: 2019569924}
+  - {fileID: 448582546}
   - {fileID: 1784710483165803246}
   - {fileID: 1929034892}
-  - {fileID: 448582546}
   - {fileID: 441464412}
   - {fileID: 1933073084}
   - {fileID: 712830759}
