@@ -6,9 +6,9 @@
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Shootable
   - Layers:
-    - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox
+    - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox, Spawners
 - Active game object:
-  - Name: Sphere
+  - Name: Spawn_List
   - Tag: Untagged
-  - Layer: Entities
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

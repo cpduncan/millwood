@@ -5,14 +5,23 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+
+    [SerializeField] private bool spawnOnStart;
     
     [SerializeField] private GameObject prefab;
     [SerializeField] private float heightOffset;
     private Vector3 positionOffset;
     [SerializeField] private Quaternion rotationOffset;
-    [SerializeField] private Color color;
+    
+    [SerializeField] private Color gizmoColor;
     
     private void Awake()
+    {
+        if (!spawnOnStart) return;
+        Spawn();
+    }
+
+    public void Spawn()
     {
         Instantiate(prefab,  transform.position + positionOffset, transform.rotation * rotationOffset);
         Destroy(gameObject);
@@ -22,7 +31,7 @@ public class Spawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         positionOffset = Vector3.up * heightOffset;
-        Gizmos.color = color;
+        Gizmos.color = gizmoColor;
         Gizmos.DrawWireCube(transform.position + (positionOffset * 0.5f), Vector3.one * heightOffset);
         Handles.Label(transform.position + (positionOffset), prefab.name);
     }
