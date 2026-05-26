@@ -122,6 +122,7 @@ public class ContactMesh
 
         _meshObject = new GameObject("Mesh object", typeof(MeshRenderer), typeof(MeshFilter));
         _meshObject.layer = 2;
+        _meshObject.AddComponent(typeof(DontDestroyOnLoad));
 
         _meshObject.GetComponent<MeshFilter>().mesh = _mesh;
         
