@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d9689cbaa41fe48bf5a47899d91bb5, type: 3}
+  m_Name: Weapon_Pistol
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  magazineSize: 6
+  damage: 2
+  spread: 0
+  range: 20
+  reloadTimeSeconds: 0.6
+  allowButtonHold: 0
+  shotCooldownSeconds: 0.18
+  burst: 0
+  burstCooldownSeconds: 0
+  bulletsPerShot: 1
+  model: {fileID: 919132149155446097, guid: 06ea9c288f3ef3541936c2cf3a21f0be, type: 3}
+  modelOffsetPosition: {x: 0.39, y: -0.38, z: 0.75}
+  modelOffsetRotation: {x: -0.026527658, y: 0.70660895, z: 0.026527658, w: 0.70660895}
+  modelOffsetScale: 0.16
+  material: {fileID: 2100000, guid: 260147f0b52f5c645884c06671b0c7f6, type: 2}
+  ammoValue: 6
