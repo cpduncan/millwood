@@ -12,7 +12,9 @@ public class FirstPersonController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
+    // private PlayerInputHandler playerInputHandler = FindAnyObjectByType<PlayerInputHandler>();
     [SerializeField] private PlayerDataController playerData;
+    // private PlayerDataController playerData = FindObjectOfType<PlayerDataController>();
     [SerializeField] private WeaponSlot weaponSlot;
 
     private QuakeCharacterController _quakeCharacterController = null;

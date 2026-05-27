@@ -37,6 +37,17 @@ public class Enemy_Spider : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+        if (overrideTargetTransform.IsUnityNull())
+        {
+            FirstPersonController player = FindAnyObjectByType<FirstPersonController>();
+
+            if (!player.IsUnityNull())
+                overrideTargetTransform = player.transform;
+
+            return;
+        }
+        
         transform.LookAt(new Vector3(overrideTargetTransform.position.x, transform.position.y, overrideTargetTransform.position.z));
         body.LookAt(overrideTargetTransform);
         body.transform.rotation *= originalBodyRotation;

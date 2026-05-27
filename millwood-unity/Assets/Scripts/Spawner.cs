@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     
     [SerializeField] private Color gizmoColor;
     
-    private void Awake()
+    private void Update()
     {
         if (!spawnOnStart) return;
         Spawn();
