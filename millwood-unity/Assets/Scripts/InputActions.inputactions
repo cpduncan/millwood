@@ -43,9 +43,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Reload",
                     "type": "Button",
-                    "id": "61b0b3d5-9009-4d22-9e70-eae0a7017dac",
+                    "id": "9c3b526a-4d40-40a4-8a45-44c2f83d257f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -55,6 +55,24 @@
                     "name": "Mill",
                     "type": "Button",
                     "id": "2763277c-fa82-425b-a1cc-31eaa55b71e0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "61b0b3d5-9009-4d22-9e70-eae0a7017dac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootStop",
+                    "type": "Button",
+                    "id": "6c85f753-87c6-47ff-bab6-5175ec751309",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -154,7 +172,7 @@
                     "name": "",
                     "id": "c625d26a-6c58-433c-8f15-fecf8a3e71f0",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -165,10 +183,32 @@
                     "name": "",
                     "id": "3e7e8c5f-fa83-45e6-aeae-808a30874e15",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ae84e9d-f3ae-46ee-b2d3-60a5d1ba76c2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc153390-a601-4c39-a3b0-cb6e916e2ca6",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootStop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -213,6 +253,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f0d4a07-464e-4922-92bb-4671e14a9518",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "615f124a-65b4-4d5f-ac3d-ab561dd5502b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

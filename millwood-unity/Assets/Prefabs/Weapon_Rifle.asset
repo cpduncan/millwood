@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d9689cbaa41fe48bf5a47899d91bb5, type: 3}
+  m_Name: Weapon_Rifle
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  magazineSize: 16
+  damage: 1
+  spread: 0.01
+  range: 30
+  reloadTimeSeconds: 0.5
+  allowButtonHold: 1
+  shotCooldownSeconds: 0.1
+  burst: 0
+  burstCooldownSeconds: 0
+  bulletsPerShot: 1
+  model: {fileID: 919132149155446097, guid: 4bbf7bfbcd0c0bc4aa33f117fb9f4bf5, type: 3}
+  modelOffsetPosition: {x: 0.46, y: -0.43, z: 1.04}
+  modelOffsetRotation: {x: 0, y: 0.70710677, z: 0, w: -0.70710677}
+  modelOffsetScale: 0.4
+  material: {fileID: 2100000, guid: 260147f0b52f5c645884c06671b0c7f6, type: 2}
+  ammoValue: 10

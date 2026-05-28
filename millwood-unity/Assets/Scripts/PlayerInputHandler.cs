@@ -14,23 +14,29 @@ public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] private string rotation = "Rotation";
     [SerializeField] private string interact = "Interact";
     [SerializeField] private string shoot = "Shoot";
+    [SerializeField] private string shootStop = "ShootStop";
     [SerializeField] private string mill = "Mill";
     [SerializeField] private string jump = "Jump";
+    [SerializeField] private string reload = "Reload";
 
     private InputAction movementAction;
     private InputAction rotationAction;
     private InputAction interactAction;
     private InputAction shootAction;
+    private InputAction shootStopAction;
     private InputAction millAction;
     private InputAction jumpAction;
+    private InputAction reloadAction;
 
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
     
     public event Action Interact;
     public event Action Shoot;
+    public event Action ShootStop;
     public event Action Mill;
     public event Action Jump;
+    public event Action Reload;
 
     private void Awake()
     {
@@ -41,8 +47,10 @@ public class PlayerInputHandler : MonoBehaviour {
         
         interactAction = mapReference.FindAction(interact);
         shootAction = mapReference.FindAction(shoot);
+        shootStopAction = mapReference.FindAction(shootStop);
         millAction = mapReference.FindAction(mill);
         jumpAction = mapReference.FindAction(jump);
+        reloadAction = mapReference.FindAction(reload);
 
         SubscribeActionValuesToInputEvents();
     }
@@ -57,8 +65,10 @@ public class PlayerInputHandler : MonoBehaviour {
 
         interactAction.performed += _ => Interact?.Invoke();
         shootAction.performed += _ => Shoot?.Invoke();
+        shootStopAction.performed += _ => ShootStop?.Invoke();
         millAction.performed += _ => Mill?.Invoke();
         jumpAction.performed += _ => Jump?.Invoke();
+        reloadAction.performed += _ => Reload?.Invoke();
     }
 
     private void OnEnable()
