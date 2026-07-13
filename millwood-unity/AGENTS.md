@@ -6,9 +6,9 @@
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Shootable
   - Layers:
-    - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox, Spawners
+    - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: Player
+  - Name: PauseUI
   - Tag: Untagged
-  - Layer: Player
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

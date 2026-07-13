@@ -1,7 +1,10 @@
 using System;
+using NUnit.Framework.Internal;
 using QuakeLR;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -12,23 +15,31 @@ public class FirstPersonController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
-    // private PlayerInputHandler playerInputHandler = FindAnyObjectByType<PlayerInputHandler>();
     [SerializeField] private PlayerDataController playerData;
-    // private PlayerDataController playerData = FindObjectOfType<PlayerDataController>();
+    [SerializeField] private Console console;
     [SerializeField] private WeaponSlot weaponSlot;
 
     private QuakeCharacterController _quakeCharacterController = null;
     
     private float _verticalRotation;
+    
+    [SerializeField] private InputActionAsset inputActionAsset;
+    [SerializeField] private GameObject pauseUI;
+    [SerializeField] private PauseMenuManager pauseMenuManager;
+    
 
     private void OnEnable()
     {
         playerInputHandler.Interact += EventInteract;
         playerInputHandler.Shoot += EventShoot;
         playerInputHandler.ShootStop += EventShootStop;
-        playerInputHandler.Mill += EventMill;
+        playerInputHandler.Decompose += EventDecompose;
         playerInputHandler.Jump += EventJump;
         playerInputHandler.Reload += EventReload;
+        playerInputHandler.Console += EventConsole;
+        playerInputHandler.Escape += EventEscape;
+        
+        playerInputHandler.UI_Escape += UI_EventEscape;
     }
     
     void Awake()
@@ -37,6 +48,35 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    private void EventConsole()
+    {
+        
+    }
+
+    // #####################################################################
+    //region pause UI management
+    
+    private void EventEscape()
+    {
+        Time.timeScale = 0f;
+        inputActionAsset.FindActionMap("Player").Disable();
+        inputActionAsset.FindActionMap("UI").Enable();
+
+        pauseMenuManager.Pause();
+    }
+    
+    private void UI_EventEscape()
+    {
+        Time.timeScale = 1f;
+        inputActionAsset.FindActionMap("UI").Disable();
+        inputActionAsset.FindActionMap("Player").Enable();
+        
+        pauseMenuManager.Unpause();
+    }
+    
+    //endregion
+    // #####################################################################
 
     private void EventInteract()
     {
@@ -53,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         weaponSlot.ShootStop();
     }
     
-    private void EventMill()
+    private void EventDecompose()
     {
         playerData.ChangeAmmo(weaponSlot.Mill());
     }

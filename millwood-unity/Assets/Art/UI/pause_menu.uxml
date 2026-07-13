@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="keybinds_entry" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry.uxml?fileID=9197481963319205126&amp;guid=4938b25ac8bda1a4c8fe9047a0895f79&amp;type=3#keybinds_entry" />
+    <Style src="project://database/Assets/Art/UI/pause_menu.uss?fileID=7433441132597879392&amp;guid=2947a8828f76cfe42820c98e139611ec&amp;type=3" />
+    <ui:VisualElement enabled="true" name="panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.88);">
+        <ui:VisualElement name="window" style="flex-grow: 1; top: auto; right: auto; bottom: auto; left: auto; opacity: 1;">
+            <ui:Label text="__pause_________________________________________________" class="header" style="padding-top: 130px;" />
+            <ui:GroupBox style="align-self: auto; flex-direction: row;">
+                <ui:VisualElement name="main" style="flex-grow: 1; margin-left: 150px; width: 5%;">
+                    <ui:Label text="main" class="header" />
+                    <ui:VisualElement name="main_content" style="flex-grow: 1;">
+                        <ui:Button text="save" class="text button" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
+                        <ui:Button text="save + exit" class="text button" />
+                        <ui:Button text="exit" class="text button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="binds" style="flex-grow: 1; margin-right: 150px;">
+                    <ui:Label text="binds" class="header" />
+                    <ui:VisualElement name="binds_content" style="flex-grow: 1;">
+                        <ui:Instance template="keybinds_entry" name="keybinds_entry" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:GroupBox>
+            <ui:Label text="________________________________________________________" focusable="false" class="header" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

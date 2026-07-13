@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mill",
+                    "name": "Decompose",
                     "type": "Button",
                     "id": "2763277c-fa82-425b-a1cc-31eaa55b71e0",
                     "expectedControlType": "",
@@ -73,6 +73,24 @@
                     "name": "ShootStop",
                     "type": "Button",
                     "id": "6c85f753-87c6-47ff-bab6-5175ec751309",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Console",
+                    "type": "Button",
+                    "id": "62b1fe19-101a-4760-b478-4134ffbf92cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "f96a3d34-286f-4db5-a72f-6e407ccf038f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -215,7 +233,7 @@
                 {
                     "name": "",
                     "id": "7d13f68e-4e2c-444a-a5eb-a8ebdc75fc1a",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -226,7 +244,7 @@
                 {
                     "name": "",
                     "id": "b5378872-0dce-4e0c-86a4-d6cbde816619",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -237,22 +255,22 @@
                 {
                     "name": "",
                     "id": "ad2f0a11-35c1-48b4-a1bd-cad7d4484e16",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mill",
+                    "action": "Decompose",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c2406bec-2c29-483b-b915-885b7f4f8218",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mill",
+                    "action": "Decompose",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -269,8 +287,8 @@
                 },
                 {
                     "name": "",
-                    "id": "615f124a-65b4-4d5f-ac3d-ab561dd5502b",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "f0045dc6-73d8-47c5-9e4e-735f582e1351",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -297,6 +315,89 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35ce2eaa-39f1-48f0-bb94-adec1ab5a51e",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Console",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48ddfb70-5dda-4434-a2d7-b02a8f535bd3",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Console",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cc2bacf-cf7a-48c8-8247-639ea89e3e5c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c94fa570-52f0-4049-a0d7-5f8e0dbd9529",
+                    "path": "<Gamepad>/{Menu}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "9c390738-1880-480b-a46d-63e365861e67",
+            "actions": [
+                {
+                    "name": "UI_Escape",
+                    "type": "Button",
+                    "id": "21ef9f1f-ac96-40be-8048-223b5ad10205",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "88d49bc6-c5ed-4689-b189-0e4f83841bc6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI_Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62b8bb5f-5246-4125-a262-14fcd8063fdc",
+                    "path": "<Gamepad>/{Menu}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI_Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

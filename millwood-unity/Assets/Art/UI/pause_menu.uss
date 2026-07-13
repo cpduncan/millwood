@@ -1,0 +1,62 @@
+:root {
+}
+
+.header {
+    color: rgb(226, 135, 16);
+    font-size: 50px;
+    -unity-font-definition: url("project://database/Assets/Art/ScreenMatrix.ttf?fileID=12800000&guid=0523386b4b19f794881550b42763a51f&type=3#ScreenMatrix");
+    align-self: center;
+}
+
+.text {
+    color: rgb(226, 135, 16);
+    font-size: 50px;
+    -unity-font-definition: url("project://database/Assets/Art/ScreenMatrix.ttf?fileID=12800000&guid=0523386b4b19f794881550b42763a51f&type=3#ScreenMatrix");
+    align-self: center;
+}
+
+.button {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(226, 135, 16);
+    border-right-color: rgb(226, 135, 16);
+    border-top-color: rgb(226, 135, 16);
+    border-bottom-color: rgb(226, 135, 16);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+
+.rebinds_row {
+    flex-direction: row;
+}
+
+.hidden {
+    display: none;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(226, 135, 16);
+    border-right-color: rgb(226, 135, 16);
+    border-top-color: rgb(226, 135, 16);
+    border-bottom-color: rgb(226, 135, 16);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    -unity-font-style: italic;
+}
+
+.button:active {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(226, 135, 16);
+    border-right-color: rgb(226, 135, 16);
+    border-top-color: rgb(226, 135, 16);
+    border-bottom-color: rgb(226, 135, 16);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    -unity-font-style: bold-and-italic;
+}

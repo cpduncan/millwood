@@ -179,4 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item_Weapon
   hitboxSize: 1.5
-  weaponData: {fileID: 11400000, guid: 016cda967f04f4f408b8948851e2b269, type: 2}
+  weaponData: {fileID: 11400000, guid: 7417c771060f7034191b73b3263b81bc, type: 2}
