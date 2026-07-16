@@ -16,27 +16,27 @@ public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] private string interact = "Interact";
     [SerializeField] private string shoot = "Shoot";
     [SerializeField] private string shootStop = "ShootStop";
-    [SerializeField] private string decompose = "Decompose";
+    [SerializeField] private string decomposeBioweapon = "DecomposeBioweapon";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string reload = "Reload";
     [SerializeField] private string console = "Console";
-    [SerializeField] private string escape = "Escape";
+    [SerializeField] private string menu = "Menu";
     
     [Header("UI Action Name References")]
-    [SerializeField] private string ui_escape = "UI_Escape";
+    [SerializeField] private string ui_menu = "UI_Menu";
 
     private InputAction movementAction;
     private InputAction rotationAction;
     private InputAction interactAction;
     private InputAction shootAction;
     private InputAction shootStopAction;
-    private InputAction decomposeAction;
+    private InputAction decomposeBioweaponAction;
     private InputAction jumpAction;
     private InputAction reloadAction;
     private InputAction consoleAction;
-    private InputAction escapeAction;
+    private InputAction menuAction;
     
-    private InputAction ui_escapeAction;
+    private InputAction ui_menuAction;
 
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
@@ -44,13 +44,13 @@ public class PlayerInputHandler : MonoBehaviour {
     public event Action Interact;
     public event Action Shoot;
     public event Action ShootStop;
-    public event Action Decompose;
+    public event Action DecomposeBioweapon;
     public event Action Jump;
     public event Action Reload;
     public event Action Console;
-    public event Action Escape;
+    public event Action Menu;
     
-    public event Action UI_Escape;
+    public event Action UI_Menu;
 
     private void Awake()
     {
@@ -62,13 +62,13 @@ public class PlayerInputHandler : MonoBehaviour {
         interactAction = mapReference.FindAction(interact);
         shootAction = mapReference.FindAction(shoot);
         shootStopAction = mapReference.FindAction(shootStop);
-        decomposeAction = mapReference.FindAction(decompose);
+        decomposeBioweaponAction = mapReference.FindAction(decomposeBioweapon);
         jumpAction = mapReference.FindAction(jump);
         reloadAction = mapReference.FindAction(reload);
         consoleAction = mapReference.FindAction(console);
-        escapeAction = mapReference.FindAction(escape);
+        menuAction = mapReference.FindAction(menu);
         
-        ui_escapeAction = ui_mapReference.FindAction(ui_escape);
+        ui_menuAction = ui_mapReference.FindAction(ui_menu);
 
         SubscribeActionValuesToInputEvents();
     }
@@ -84,13 +84,13 @@ public class PlayerInputHandler : MonoBehaviour {
         interactAction.performed += _ => Interact?.Invoke();
         shootAction.performed += _ => Shoot?.Invoke();
         shootStopAction.performed += _ => ShootStop?.Invoke();
-        decomposeAction.performed += _ => Decompose?.Invoke();
+        decomposeBioweaponAction.performed += _ => DecomposeBioweapon?.Invoke();
         jumpAction.performed += _ => Jump?.Invoke();
         reloadAction.performed += _ => Reload?.Invoke();
         consoleAction.performed += _ => Console?.Invoke();
-        escapeAction.performed += _ => Escape?.Invoke();
+        menuAction.performed += _ => Menu?.Invoke();
         
-        ui_escapeAction.performed += _ => UI_Escape?.Invoke();
+        ui_menuAction.performed += _ => UI_Menu?.Invoke();
     }
 
     private void OnEnable()

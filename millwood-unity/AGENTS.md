@@ -6,7 +6,7 @@
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Shootable
   - Layers:
-    - Default, TransparentFX, Ignore Raycast, Water, UI
+    - Default, TransparentFX, Ignore Raycast, Player, Water, UI, Entities, Hitbox, Spawners
 - Active game object:
   - Name: PauseUI
   - Tag: Untagged

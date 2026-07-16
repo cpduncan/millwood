@@ -1,26 +1,36 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="keybinds_entry" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry.uxml?fileID=9197481963319205126&amp;guid=4938b25ac8bda1a4c8fe9047a0895f79&amp;type=3#keybinds_entry" />
+    <ui:Template name="keybinds_entry_bindable" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry_bindable.uxml?fileID=9197481963319205126&amp;guid=d8c538546b73ab64b9f99f18381d0704&amp;type=3#keybinds_entry_bindable" />
+    <ui:Template name="keybinds_entry_unbindable" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry_unbindable.uxml?fileID=9197481963319205126&amp;guid=5d74429a5131255499f7053b9faba79f&amp;type=3#keybinds_entry_unbindable" />
     <Style src="project://database/Assets/Art/UI/pause_menu.uss?fileID=7433441132597879392&amp;guid=2947a8828f76cfe42820c98e139611ec&amp;type=3" />
     <ui:VisualElement enabled="true" name="panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.88);">
         <ui:VisualElement name="window" style="flex-grow: 1; top: auto; right: auto; bottom: auto; left: auto; opacity: 1;">
-            <ui:Label text="__pause_________________________________________________" class="header" style="padding-top: 130px;" />
-            <ui:GroupBox style="align-self: auto; flex-direction: row;">
-                <ui:VisualElement name="main" style="flex-grow: 1; margin-left: 150px; width: 5%;">
-                    <ui:Label text="main" class="header" />
+            <ui:Label text="________________________________________________________" class="header" style="padding-top: 100px;" />
+            <ui:GroupBox style="flex-direction: row;">
+                <ui:VisualElement name="main" style="min-width: initial; max-width: initial; padding-left: 10%; width: 30%; flex-shrink: 0;">
+                    <ui:Label text="main" class="header text" />
                     <ui:VisualElement name="main_content" style="flex-grow: 1;">
-                        <ui:Button text="save" class="text button" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
-                        <ui:Button text="save + exit" class="text button" />
-                        <ui:Button text="exit" class="text button" />
+                        <ui:Button text="save" class="text bigbutton" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
+                        <ui:Button text="save + exit" class="text bigbutton" />
+                        <ui:Button text="exit" class="text bigbutton" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="binds" style="flex-grow: 1; margin-right: 150px;">
-                    <ui:Label text="binds" class="header" />
-                    <ui:VisualElement name="binds_content" style="flex-grow: 1;">
-                        <ui:Instance template="keybinds_entry" name="keybinds_entry" />
-                    </ui:VisualElement>
+                <ui:VisualElement name="binds" style="padding-right: 15%; flex-grow: 1; padding-left: 10%;">
+                    <ui:Label text="settings" class="header text" />
+                    <ui:TabView class="unity-tab-view text" style="align-self: auto;">
+                        <ui:Tab label="game" name="game_settings">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Toggle label="gamepad terminal nav" name="Toggle" style="flex-direction: row-reverse;" />
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="binds" enabled="true" name="bindings_settings">
+                            <ui:VisualElement name="binds_content" style="flex-grow: 1;">
+                                <ui:Instance template="keybinds_entry_bindable" name="keybinds_entry_bindable" />
+                                <ui:Instance template="keybinds_entry_unbindable" name="keybinds_entry_unbindable" />
+                            </ui:VisualElement>
+                        </ui:Tab>
+                    </ui:TabView>
                 </ui:VisualElement>
             </ui:GroupBox>
-            <ui:Label text="________________________________________________________" focusable="false" class="header" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

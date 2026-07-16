@@ -33,13 +33,13 @@ public class FirstPersonController : MonoBehaviour
         playerInputHandler.Interact += EventInteract;
         playerInputHandler.Shoot += EventShoot;
         playerInputHandler.ShootStop += EventShootStop;
-        playerInputHandler.Decompose += EventDecompose;
+        playerInputHandler.DecomposeBioweapon += EventDecomposeBioweapon;
         playerInputHandler.Jump += EventJump;
         playerInputHandler.Reload += EventReload;
         playerInputHandler.Console += EventConsole;
-        playerInputHandler.Escape += EventEscape;
+        playerInputHandler.Menu += EventMenu;
         
-        playerInputHandler.UI_Escape += UI_EventEscape;
+        playerInputHandler.UI_Menu += UI_EventMenu;
     }
     
     void Awake()
@@ -57,7 +57,7 @@ public class FirstPersonController : MonoBehaviour
     // #####################################################################
     //region pause UI management
     
-    private void EventEscape()
+    private void EventMenu()
     {
         Time.timeScale = 0f;
         inputActionAsset.FindActionMap("Player").Disable();
@@ -66,7 +66,7 @@ public class FirstPersonController : MonoBehaviour
         pauseMenuManager.Pause();
     }
     
-    private void UI_EventEscape()
+    private void UI_EventMenu()
     {
         Time.timeScale = 1f;
         inputActionAsset.FindActionMap("UI").Disable();
@@ -93,7 +93,7 @@ public class FirstPersonController : MonoBehaviour
         weaponSlot.ShootStop();
     }
     
-    private void EventDecompose()
+    private void EventDecomposeBioweapon()
     {
         playerData.ChangeAmmo(weaponSlot.Mill());
     }

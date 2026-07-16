@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Decompose",
+                    "name": "DecomposeBioweapon",
                     "type": "Button",
                     "id": "2763277c-fa82-425b-a1cc-31eaa55b71e0",
                     "expectedControlType": "",
@@ -88,7 +88,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Escape",
+                    "name": "Menu",
                     "type": "Button",
                     "id": "f96a3d34-286f-4db5-a72f-6e407ccf038f",
                     "expectedControlType": "",
@@ -259,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Decompose",
+                    "action": "DecomposeBioweapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Decompose",
+                    "action": "DecomposeBioweapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -347,7 +347,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Escape",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -358,7 +358,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Escape",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -369,7 +369,7 @@
             "id": "9c390738-1880-480b-a46d-63e365861e67",
             "actions": [
                 {
-                    "name": "UI_Escape",
+                    "name": "UI_Menu",
                     "type": "Button",
                     "id": "21ef9f1f-ac96-40be-8048-223b5ad10205",
                     "expectedControlType": "",
@@ -386,7 +386,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UI_Escape",
+                    "action": "UI_Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -397,7 +397,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UI_Escape",
+                    "action": "UI_Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
