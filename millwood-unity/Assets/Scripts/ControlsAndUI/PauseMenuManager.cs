@@ -60,7 +60,7 @@ public class PauseMenuManager : MonoBehaviour
         DisplayUnbindableEntry(actionMap.FindAction("Movement"), binds_content);
         DisplayUnbindableEntry(actionMap.FindAction("Rotation"), binds_content);
         DisplayBindableEntry(actionMap.FindAction("Jump"), binds_content);
-        DisplayBindableEntry(actionMap.FindAction("Crouch/Slide"), binds_content);
+        DisplayBindableEntry(actionMap.FindAction("CrouchSlide"), binds_content);
         DisplayBindableEntry(actionMap.FindAction("Sprint"), binds_content);
         DisplaySpacer(binds_content);
         DisplayBindableEntry(actionMap.FindAction("Vision"), binds_content);
