@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="keybinds_entry_unbindable" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry_unbindable.uxml?fileID=9197481963319205126&amp;guid=5d74429a5131255499f7053b9faba79f&amp;type=3#keybinds_entry_unbindable" />
+    <ui:Template name="keybinds_entry_bindable" src="project://database/Assets/Scripts/ControlsAndUI/keybinds_entry_bindable.uxml?fileID=9197481963319205126&amp;guid=d8c538546b73ab64b9f99f18381d0704&amp;type=3#keybinds_entry_bindable" />
+    <Style src="project://database/Assets/Art/UI/pause_menu.uss?fileID=7433441132597879392&amp;guid=2947a8828f76cfe42820c98e139611ec&amp;type=3#pause_menu" />
+    <ui:VisualElement enabled="true" name="panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.88);">
+        <ui:VisualElement name="window" style="flex-grow: 1; top: auto; right: auto; bottom: auto; left: auto; opacity: 1; position: relative;">
+            <ui:Label text="________________________________________________________" class="header" style="padding-top: 20px;" />
+            <ui:GroupBox style="flex-direction: row;">
+                <ui:VisualElement name="main" style="min-width: initial; max-width: initial; padding-left: 10%; width: 30%; flex-shrink: 0;">
+                    <ui:Label text="main" class="header text" />
+                    <ui:VisualElement name="main_content" style="flex-grow: 1;">
+                        <ui:Button text="save" class="text bigbutton" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
+                        <ui:Button text="save + exit" class="text bigbutton" />
+                        <ui:Button text="exit" class="text bigbutton" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="binds" style="padding-right: 15%; flex-grow: 1; padding-left: 10%;">
+                    <ui:Label text="settings" class="header text" />
+                    <ui:TabView class="unity-tab-view text" style="align-self: auto;">
+                        <ui:Tab label="game" name="game_settings">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Toggle label="terminal navigation without typing commands" name="Toggle" style="flex-direction: row-reverse;" />
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="binds" enabled="true" name="bindings_settings">
+                            <ui:VisualElement name="binds_content" style="flex-grow: 1;">
+                                <ui:Instance template="keybinds_entry_unbindable" name="keybinds_entry_unbindable" />
+                                <ui:Instance template="keybinds_entry_bindable" name="keybinds_entry_bindable" />
+                            </ui:VisualElement>
+                        </ui:Tab>
+                    </ui:TabView>
+                </ui:VisualElement>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="rebinding_overlay" class="hidden" style="flex-grow: 1; position: absolute; background-color: rgba(0, 0, 0, 0.86); width: 100%; height: 100%;">
+        <ui:Label text="enter new binding for action" class="text" style="position: absolute; translate: 0 1350%;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -9,9 +9,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"picker_window_position_offset.00000000" = "24;220;320;550.4"
+	"picker_window_position_offset.00000000" = "24;220;837;550"
 	"picker_visibility_flags.00000000" = "0"
-	"picker_item_size.00000000" = "1"
+	"picker_item_size.00000000" = "129"
 	"picker_inspector.00000000" = "0"
 }
 providers = {
@@ -69,6 +69,13 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"type: inputaction"
+	"type: input "
+	"type: UnityEngine.InputSystem.InputActr"
+	"type: UnityEngine.InputSystem.Inp"
+	"type: UnityEngine.InputSys"
+	"type: UnityEngine."
+	"type: input act"
 ]
 searchItemFavorites = [
 ]
@@ -83,4 +90,4 @@ helperWidgetCurrentArea = "all"
 disabledIndexers = ""
 minIndexVariations = 2
 findProviderIndexHelper = true
-itemIconSize = 32
+itemIconSize = 129

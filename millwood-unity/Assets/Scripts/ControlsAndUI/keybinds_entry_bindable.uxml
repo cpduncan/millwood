@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="entry" data-source-type="UnityEngine.InputSystem.InputAction, Unity.InputSystem" class="rebinds_row" style="flex-grow: 1;">
+        <ui:VisualElement name="name" style="flex-grow: 1; width: 100px;">
+            <ui:Label text="name" class="text">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="m_Name" binding-mode="ToTarget" />
+                </Bindings>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement name="Keyboard" style="flex-grow: 1; width: 100px;">
+            <ui:Button text="kbm" name="kbm_remap_button" class="button text">
+                <Bindings>
+                    <CustomInputDisplayBinding property="text" />
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="Gamepad" style="flex-grow: 1; width: 100px;">
+            <ui:Button text="gamepad" name="gamepad_remap_button" class="button text">
+                <Bindings>
+                    <CustomInputDisplayBinding property="text" device="Gamepad" />
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="Restore" style="flex-grow: 0;">
+            <ui:Button text="reset" name="reset_binding_button" class="button text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

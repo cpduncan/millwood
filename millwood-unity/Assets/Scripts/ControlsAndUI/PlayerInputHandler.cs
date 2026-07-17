@@ -8,25 +8,35 @@ public class PlayerInputHandler : MonoBehaviour {
 
     [Header("Action Map Name Reference")]
     [SerializeField] private string actionMapName = "Player";
+    [SerializeField] private string ui_actionMapName = "UI";
 
-    [Header("Action Name References")]
+    [Header("Gameplay Action Name References")]
     [SerializeField] private string movement = "Movement";
     [SerializeField] private string rotation = "Rotation";
     [SerializeField] private string interact = "Interact";
     [SerializeField] private string shoot = "Shoot";
     [SerializeField] private string shootStop = "ShootStop";
-    [SerializeField] private string mill = "Mill";
+    [SerializeField] private string decomposeBioweapon = "DecomposeBioweapon";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string reload = "Reload";
+    [SerializeField] private string console = "Console";
+    [SerializeField] private string menu = "Menu";
+    
+    [Header("UI Action Name References")]
+    [SerializeField] private string ui_menu = "UI_Menu";
 
     private InputAction movementAction;
     private InputAction rotationAction;
     private InputAction interactAction;
     private InputAction shootAction;
     private InputAction shootStopAction;
-    private InputAction millAction;
+    private InputAction decomposeBioweaponAction;
     private InputAction jumpAction;
     private InputAction reloadAction;
+    private InputAction consoleAction;
+    private InputAction menuAction;
+    
+    private InputAction ui_menuAction;
 
     public Vector2 MovementInput { get; private set; }
     public Vector2 RotationInput { get; private set; }
@@ -34,23 +44,31 @@ public class PlayerInputHandler : MonoBehaviour {
     public event Action Interact;
     public event Action Shoot;
     public event Action ShootStop;
-    public event Action Mill;
+    public event Action DecomposeBioweapon;
     public event Action Jump;
     public event Action Reload;
+    public event Action Console;
+    public event Action Menu;
+    
+    public event Action UI_Menu;
 
     private void Awake()
     {
         InputActionMap mapReference = playerControls.FindActionMap(actionMapName);
+        InputActionMap ui_mapReference = playerControls.FindActionMap(ui_actionMapName);
 
         movementAction = mapReference.FindAction(movement);
         rotationAction = mapReference.FindAction(rotation);
-        
         interactAction = mapReference.FindAction(interact);
         shootAction = mapReference.FindAction(shoot);
         shootStopAction = mapReference.FindAction(shootStop);
-        millAction = mapReference.FindAction(mill);
+        decomposeBioweaponAction = mapReference.FindAction(decomposeBioweapon);
         jumpAction = mapReference.FindAction(jump);
         reloadAction = mapReference.FindAction(reload);
+        consoleAction = mapReference.FindAction(console);
+        menuAction = mapReference.FindAction(menu);
+        
+        ui_menuAction = ui_mapReference.FindAction(ui_menu);
 
         SubscribeActionValuesToInputEvents();
     }
@@ -66,9 +84,13 @@ public class PlayerInputHandler : MonoBehaviour {
         interactAction.performed += _ => Interact?.Invoke();
         shootAction.performed += _ => Shoot?.Invoke();
         shootStopAction.performed += _ => ShootStop?.Invoke();
-        millAction.performed += _ => Mill?.Invoke();
+        decomposeBioweaponAction.performed += _ => DecomposeBioweapon?.Invoke();
         jumpAction.performed += _ => Jump?.Invoke();
         reloadAction.performed += _ => Reload?.Invoke();
+        consoleAction.performed += _ => Console?.Invoke();
+        menuAction.performed += _ => Menu?.Invoke();
+        
+        ui_menuAction.performed += _ => UI_Menu?.Invoke();
     }
 
     private void OnEnable()
